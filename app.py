@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from data import data
 
 app = Flask(__name__)
 
@@ -10,7 +11,10 @@ def home():
 
 @app.route("/user/<int:user_id>")
 def user(user_id):
-    return render_template("user.html", user_id=user_id)
+    # pass a dict to the template
+    # keep order in toy data now but getting would prob be handled by say mongodb
+    user_data = data[user_id - 1]  # bc int is positive
+    return render_template("user.html", user_data=user_data)
 
 
 if __name__ == "__main__":

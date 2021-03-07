@@ -1,4 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>User: {{ user_id }}</h1>
+<h1>Welcome {{ user_data['name']['first'] + " " + user_data['name']['last'] | title }}</h1>
+<h4>User ID: {{ user_data['name']['user'] }}</h4>
 {% endblock %}
