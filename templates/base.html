@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <!-- use url_for to look for the flask functions -->
+    <a href="{{ url_for('home') }}">Home</a> | <a href="{{ url_for('about') }}">About</a>
+    |<a href="{{ url_for('register') }}">Register</a> | <a href="{{ url_for('login') }}">Login</a>
     {% block content %}{% endblock %}
 </body>
 
