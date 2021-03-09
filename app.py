@@ -1,7 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from data import data
 
+
 app = Flask(__name__)
+app.config.from_pyfile("config.py")
 
 
 @app.route("/")
