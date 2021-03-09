@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from data import data
+import forms
 
 
 app = Flask(__name__)
@@ -17,9 +18,13 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/register")
+# this one needs get for retrieving page and post to submit
+@app.route("/register", methods=["GET", "POST"])
 def register():
-    return render_template("register.html")
+    registration_form = forms.RegistrationForm()
+    if registration_form.validate_on_submit():
+        return redirect(url_for("login"))
+    return render_template("register.html", template_form=registration_form)
 
 
 @app.route("/login")
